@@ -1,0 +1,30 @@
+.jumbotron {
+
+    text-align: center;
+    color: white;
+    background: none;
+}
+
+body{
+    background-color: black;
+    background-image: url(../assets/images-sounds/background.jpg);
+    opacity: 75%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    
+}
+
+.btn{
+    background: none;
+    border-color: aliceblue;
+
+
+
+
+
+}
+
+.btn:hover{
+    
+}

@@ -3,6 +3,7 @@
     text-align: center;
     color: white;
     background: none;
+    padding-bottom: 0;
 }
 
 body{
@@ -16,15 +17,47 @@ body{
 }
 
 .btn{
-    background: none;
-    border-color: aliceblue;
-
-
-
+  background-color: #27448b;
+  color:white;  
+    border: none;
+font-family: 'Roboto Condensed' , sans-serif;
+opacity: .95; 
 
 
 }
 
 .btn:hover{
+    color:black;
+    background-color: white;
+    border-color: white;
+    font-weight: bold;
+
+}
+
+#newsFeed{
+    align-content: center;
+}
+
+.card-img{
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px #1d1d1d;
+    font-family: Arial, Helvetica, sans-serif;
     
+}
+
+.card-img img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: cover;
+
+}
+
+h1{
+    font-size: 50px;
 }

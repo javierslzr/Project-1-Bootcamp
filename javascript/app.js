@@ -11,6 +11,8 @@ $("#searchCity").on("click", function(){
 });
   });
 
+
+  update 1 
 //   $('#searchCity').on("click", function(){    
 //     $('#paperPlane').attr('style', "display:none;" , function(){
 //         $("#cityImg, #weather, #map, #newsFeed").attr('style', "display:block;");

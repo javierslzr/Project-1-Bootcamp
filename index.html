@@ -13,16 +13,42 @@
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed" rel="stylesheet">
 
-
-
-
-
 </head>
 
 <body>
 
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <img id="logo1" src="assets/images-sounds/logo1.png" alt="logo">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a href="" class="nav-link" href="#">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="" class="nav-link" href="#">Connect</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
+
         <div class="row" style="padding: 2%;">
+
             <div class="col-md-12">
                 <div class="modal fade" id="myModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
@@ -43,9 +69,11 @@
                     </div>
                 </div>
             </div>
+
         </div>
 
         <div class="row">
+
             <div class="col-md-12">
                 <div class="jumbotron jumbotron-fluid" id="jumbotron">
                     <div class="container">
@@ -54,80 +82,115 @@
                             <input type="text" class="form-control" aria-label="Sizing example input" placeholder="Search city or country"
                                 aria-describedby="inputGroup-sizing-sm">
                         </div>
-                        <br>
-                        <div>
-                            <button type="button" id="searchCity" class="btn btn-primary btn-lg">Let's
-                                go!</button>
-                            <button type="button" id="myModal" class="btn btn-primary btn-lg" data-toggle="modal"
-                                data-target="#myModal">
-                                Suggestions
-                            </button>
-
-                        </div>
                     </div>
-
                 </div>
             </div>
+
         </div>
 
-        <div class="row" style="padding: 1%;"></div>
+        <div class="row">
 
-        <div class="row"style="display: none">
-            <div class="col-md-12">
-                <div class="card-img bg-dark text-white"style="display: none">
-                    <img class="card-img" id="cover" src="./assets/images-sounds/city1.jpg" alt="Card image">
-                    <div class="card-img-overlay">
-                        <h1 class="card-title" id="cityNameDisplay">City Name   </h1>
-                    </div>
-                </div>
+            <div class="mx-auto" id="btnBox">
+                <button type="button" id="searchCity" class="btn btn-primary btn-lg">Let's
+                    go!</button>
+                <button type="button" id="myModal" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+                    Suggestions
+                </button>
             </div>
+
         </div>
 
         <div class="row" style="padding: 1%;"></div>
 
         <div class="row">
-            <div class="col-md-6">
-                <div class="card"style="display: none">
-                    <div class="card-body">
-                        <h5 class="card-title">weather</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+            <div class="col-md-12">
+                <div class="mx-auto" id="paperDiv">
+                    <img src="assets/images-sounds/paperpng1.png" alt="Plane paper" id="paperPlane">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="row" style="padding: 1%;"></div>
+
+        <div class="search-results">
+            <div class="row">
+
+                <div class="col-md-12">
+                    <div class="card card-img bg-dark text-white" id="cityImg">
+                        <img class="card-img" id="cover" src="./assets/images-sounds/city1.jpg" alt="Card image">
+                        <div class="card-img-overlay">
+                            <h1 class="card-title" id="cityNameDisplay">City Name </h1>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="row" style="padding: 1%;"></div>
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="card" id="weather">
+                        <div class="card-body">
+                            <h5 class="card-title">weather</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="card" id="map">
+                        <div class="card-body">
+                            <h5 class="card-title">mapa</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="card"style="display: none">
-                    <div class="card-body">
-                        <h5 class="card-title">mapa</h5>
-                        <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+            <div class="row" style="padding: 1%;"></div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card" id="newsFeed">
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                            <a href="#" class="btn btn-primary">Go somewhere</a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
+
     </div>
 
-    <div class="row" style="padding: 1%;"></div>
-
-    <div class="row" id="newsFeed">
-       
-        <div class="col-md-8 col-md-offset-2">
-            <div class="card"style="display: none">
-                <h5 class="card-header">noticias</h5>
-                <div class="card-body">
-                    <h5 class="card-title">Special title treatment</h5>
-                    <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <footer>
+        <div class="container-fluid padding">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <img src="assets/images-sounds/logo1.png" alt="" id="logo1">
+                    <p>Copyright 2018</p>
                 </div>
             </div>
         </div>
-       
-    </div>
+    </footer>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
         crossorigin="anonymous"></script>
+
+
+
     <script src="./javascript/app.js"></script>
 
 

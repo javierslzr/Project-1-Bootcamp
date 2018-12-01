@@ -10,6 +10,7 @@
     <!-- BOOTSTRAP AND CSS REFERENCE -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
         crossorigin="anonymous">
+        <link rel="stylesheet" href="./assets/lightslider/dist/css/lightslider.min.css">
     <link rel="stylesheet" type="text/css" href="./css/style.css" />
     
     <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyD4OtEpIxpPh4dEJ_YtVAtGICyrDmsevoA&callback=initMap"></script>
@@ -171,8 +172,9 @@
                 <div class="col-md-12">
                     <div class="card" id="newsFeed">
                         <div class="card-body">
-                            <h5 class="card-title">Special title treatment</h5>
-                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                <button  class="btn btn-primary btn-lg" id ="news-Feed">Let´s see some news</button>
+                                <ul id="slider">
+                                </ul>
                         </div>
                     </div>
                 </div>
@@ -184,7 +186,7 @@
     </div>
     </div>
 
-    <!-- VARIOS SCRIPTS FOR REFERENCE -->
+    <!-- VARIOUS SCRIPTS FOR REFERENCE -->
 
     <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
         crossorigin="anonymous"></script>
@@ -197,7 +199,11 @@
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     
+    <script src="./assets/lightslider/dist/js/lightslider.js"></script>
+
     <script src="./javascript/jquery.geocomplete.js"></script>
+    
+    
 
     <script src="./javascript/app.js"></script>
 

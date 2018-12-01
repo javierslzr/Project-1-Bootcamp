@@ -301,5 +301,76 @@ $(document).ready(function () {
 });
 
 
+// NEWS SECTION
+$(document).ready(function () {
+  $("#myModal").on('shown.bs.modal', function () {
+    $("#myModal").trigger('focus');
+  });
+});
+
+
+$("#searchCity").on("click", function () {
+  var city = $("#inputCity").val();
+  city = city.split(",")[0];
+  console.log(city);
+
+  var queryURL = 'https://newsapi.org/v2/everything?' +
+    'q=' + city +
+    '&from=2018-11-28&' +
+    'sortBy=popularity&' +
+    'language=en&' +
+    'apiKey=d609a00248ff4cf99663ebecb97d3e29';
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+    .then(function (response) {
+      console.log(queryURL);
+      console.log(response);
+      var slides = response.articles.map((article) => {
+        var slide = $("<li class='slide'>");
+        var newsTitle = $("<p class='newsTitle'>");
+        newsTitle.text(article.title);
+
+        var newsDescription = $("<p class='newsDes'>");
+        newsDescription.text(article.description);
+
+        var newsImage = $("<img class='imgNews'>");
+        newsImage.attr("src", article.urlToImage);
+
+        slide.append(newsTitle, newsDescription, newsImage);
+        return slide;
+      });
+
+      $("#slider").append(slides);
+      setTimeout(initializeSlider, 1000);
+    });
+
+  $('#paperPlane').fadeOut('slow', function () {
+    $('.search-results').fadeIn("slow");
+  });
+});
+
+//a timer will call this function, and the rotation will begin
+function rotate() {
+  $('#next').click();
+}
+
+
+function initializeSlider() {
+  $("#slider").lightSlider({
+    adaptiveHeight: true,
+    item: 1,
+    slideMargin: 0,
+    loop: true
+  });
+}
+
+
+
+
+
+
 
 

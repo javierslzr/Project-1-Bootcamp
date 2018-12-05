@@ -1,60 +1,16 @@
-// FIREBASE
-
-var config = {
-  apiKey: "AIzaSyCzRedky3Rg5LZZdNPmZv4wIKCiE6bvAgk",
-  authDomain: "where2go-db.firebaseapp.com",
-  databaseURL: "https://where2go-db.firebaseio.com",
-  projectId: "where2go-db",
-  storageBucket: "where2go-db.appspot.com",
-  messagingSenderId: "1037462210811"
-};
-firebase.initializeApp(config);
-
-var database = firebase.database();
-
-$(document).ready(function () {
-
-  $("#searchCity").click(function (e) {
-
-    e.preventDefault();
-
-    var citysearched = $("#inputCity").val().trim();
-
-    database.ref().push({
-      citysearched: citysearched
-    })
-
-  });
-
-  database.ref().on("child_added", function (snapshot) {
-
-    var btndump = $(".modal-body");
-    var city = snapshot.val().citysearched;
-    var cityBtn = $("<button>");
-    cityBtn.addClass("btn-primary", "searchbtn");
-    cityBtn.attr("btn-primary");
-    cityBtn.text(city);
-    btndump.append(cityBtn);
-
-    // $(cityBtn).on("click", function () {
-
-
-
-  });
-
-});
 
 // API MAP
 var map;
 
 function initMap() {
+  var latlongitud = new google.maps.LatLng(25.6714,-100.309);
   map = new google.maps.Map(document.getElementById("map-display"), {
-    center: { lat: 25.6714, lng: -100.309 },
+    center: latlongitud,
     zoom: 12
   });
 }
 
-$(document).ready(function () {
+$(document).ready(function(){
 
   var service
   var city;
@@ -142,7 +98,7 @@ $(document).ready(function () {
     console.log(results);
 
     console.log(photos);
-    var content = '<div id = "titleMarker">' + '<h2>' + results.name + '</h2>' + '</div>' + '<div id = "informationMarker"><p>' + results.formatted_address + '</p></div>';
+    var content = '<div id = "titleMarker">' + '<h4>' + results.name + '</h4>' + '</div>' + '<div id = "informationMarker"><p>' + results.formatted_address + '</p></div>';
     var marker = new google.maps.Marker({
       position: results.geometry.location,
       map: map,
@@ -204,34 +160,81 @@ $(document).ready(function () {
 
   initialize();
 
-});
 
 
-// SHOW MODAL
-$(document).ready(function () {
+  // FIREBASE
+
+  var config = {
+    apiKey: "AIzaSyCzRedky3Rg5LZZdNPmZv4wIKCiE6bvAgk",
+    authDomain: "where2go-db.firebaseapp.com",
+    databaseURL: "https://where2go-db.firebaseio.com",
+    projectId: "where2go-db",
+    storageBucket: "where2go-db.appspot.com",
+    messagingSenderId: "1037462210811"
+  }
+
+  firebase.initializeApp(config);
+
+  var database = firebase.database();
+
+
+
+  $("#searchCity").click(function (e) {
+
+    e.preventDefault();
+
+    var citysearched = $("#inputCity").val().trim();
+
+    database.ref().push({
+      citysearched: citysearched
+    })
+
+  });
+
+  database.ref().on("child_added", function (snapshot) {
+
+    var btndump = $(".modal-body");
+    var city = snapshot.val().citysearched;
+    var cityBtn = $("<button>");
+    cityBtn.addClass("btn-primary", "searchbtn");
+    cityBtn.attr("btn-primary");
+    cityBtn.text(city);
+    btndump.append(cityBtn);
+
+    // $(cityBtn).on("click", function () {
+
+
+
+  });
+
+
+
+
+  // SHOW MODAL
+
   $("#myModal").on('shown.bs.modal', function () {
     $("#myModal").trigger('focus');
   });
-});
 
-// AUTOCOMPLETE LOCATION
-$("input").geocomplete();
 
-// Trigger geocoding request.
-$("#searchCity").click(function () {
-  $("#inputCity").trigger("geocode");
-});
+  // AUTOCOMPLETE LOCATION
+  //$("input").geocomplete();
 
-// SEARCH RESULTS ANIMATION
-$("#searchCity").on("click", function () {
-  $('#paperPlane').fadeOut('slow', function () {
-    $('.search-results').fadeIn("slow");
+  // Trigger geocoding request.
+  $("#searchCity").click(function () {
+    $("#inputCity").trigger("geocode");
   });
-});
+
+  // SEARCH RESULTS ANIMATION
+  $("#searchCity").on("click", function () {
+    $('#paperPlane').fadeOut('slow', function () {
+      $('.search-results').fadeIn("slow");
+    });
+  });
 
 
-// API CITY COVER IMAGE
-$(document).ready(function () {
+  // API CITY COVER IMAGE
+
   $('#searchCity').on('click', function (e) {
     e.preventDefault();
 
@@ -262,10 +265,74 @@ $(document).ready(function () {
     $("#cityNameDisplay").append(citytName);
 
   });
+
+// NEWS SECTION
+
+  $("#myModal").on('shown.bs.modal', function () {
+    $("#myModal").trigger('focus');
+  });
+
+
+
+$("#searchCity").on("click", function () {
+  var city = $("#inputCity").val();
+  city = city.split(",")[0];
+  console.log(city);
+
+  var queryURL = 'https://newsapi.org/v2/everything?' +
+    'q=' + city +
+    '&from=2018-11-28&' +
+    'sortBy=popularity&' +
+    'language=en&' +
+    'apiKey=d609a00248ff4cf99663ebecb97d3e29';
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+
+    .then(function (response) {
+      console.log(queryURL);
+      console.log(response);
+      var slides = response.articles.map((article) => {
+        var slide = $("<li class='slide'>");
+        var newsTitle = $("<p class='newsTitle'>");
+        newsTitle.text(article.title);
+
+        var newsDescription = $("<p class='newsDes'>");
+        newsDescription.text(article.description);
+
+        var newsImage = $("<img class='imgNews'>");
+        newsImage.attr("src", article.urlToImage);
+
+        slide.append(newsTitle, newsDescription, newsImage);
+        return slide;
+      });
+
+      $("#slider").append(slides);
+      setTimeout(initializeSlider, 1000);
+    });
+
+  $('#paperPlane').fadeOut('slow', function () {
+    $('.search-results').fadeIn("slow");
+  });
 });
 
-// API WEATHER
-$(document).ready(function () {
+//a timer will call this function, and the rotation will begin
+function rotate() {
+  $('#next').click();
+}
+
+
+function initializeSlider() {
+  $("#slider").lightSlider({
+    adaptiveHeight: true,
+    item: 1,
+    slideMargin: 0,
+    loop: true
+  });
+}
+  // API WEATHER
+
   $("#searchCity").on("click", function (event) {
 
     event.preventDefault();
@@ -296,10 +363,7 @@ $(document).ready(function () {
 
       console.log(temp)
 
+
     });
   });
 });
-
-
-
-
